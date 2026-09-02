@@ -1,0 +1,55 @@
+<section class="about-hero">
+  <div class="about-hero__inner">
+    <span class="eyebrow-plain">About RanaCafe</span>
+    <h1>A neighborhood bakery with a Middle Eastern accent</h1>
+    <p>{{ cafe().story }}</p>
+  </div>
+</section>
+
+<section class="section about-grid">
+  <div class="about-card">
+    <h2>Visit</h2>
+    <p class="about-card__address">
+      {{ cafe().address }}<br />
+      {{ cafe().city }}, {{ cafe().state }} {{ cafe().zip }}<br />
+      {{ cafe().neighborhood }}
+    </p>
+    <p>
+      <a class="about-card__link" [href]="'tel:' + cafe().phone">{{ cafe().phone }}</a><br />
+      <a class="about-card__link" [href]="'mailto:' + cafe().email">{{ cafe().email }}</a>
+    </p>
+    <a class="btn btn--primary" [href]="cafe().mapsUrl" target="_blank" rel="noopener">Get directions</a>
+    <a class="btn btn--outline" [href]="cafe().facebookUrl" target="_blank" rel="noopener">Facebook page</a>
+  </div>
+
+  <div class="about-card">
+    <h2>Hours</h2>
+    <table class="hours-table">
+      <tbody>
+        @for (day of cafe().hours; track day.day) {
+          <tr [class.is-closed]="day.hours === 'Closed'">
+            <td>{{ day.day }}</td>
+            <td>{{ day.hours }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <p class="about-card__note">Hours can shift around holidays — a quick call ahead is always a safe bet.</p>
+  </div>
+</section>
+
+<section class="section map-section">
+  <span class="eyebrow-plain">Find us in Gunston Plaza</span>
+  <h2>7756 Gunston Plaza, Lorton VA</h2>
+  <div class="map-frame">
+    <iframe
+      [src]="mapEmbedUrl"
+      width="100%"
+      height="380"
+      style="border:0"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map showing RanaCafe location in Lorton, VA"
+    ></iframe>
+  </div>
+</section>

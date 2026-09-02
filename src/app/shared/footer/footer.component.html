@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="footer__row">
+    <div class="footer__brand">
+      <span class="footer__mark">Rana<em>Cafe</em></span>
+      <p>{{ cafe().tagline }}</p>
+      <a class="footer__social" [href]="cafe().facebookUrl" target="_blank" rel="noopener">Follow on Facebook</a>
+    </div>
+
+    <div class="footer__block">
+      <h3>Find us</h3>
+      <p>{{ cafe().address }}<br />{{ cafe().city }}, {{ cafe().state }} {{ cafe().zip }}</p>
+      <p><a [href]="'tel:' + cafe().phone">{{ cafe().phone }}</a></p>
+      <a class="footer__link" [href]="cafe().mapsUrl" target="_blank" rel="noopener">Get directions</a>
+    </div>
+
+    <div class="footer__block">
+      <h3>Hours</h3>
+      <ul>
+        @for (day of cafe().hours; track day.day) {
+          <li><span>{{ day.day }}</span><span>{{ day.hours }}</span></li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer__block">
+      <h3>Explore</h3>
+      <ul class="footer__nav">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/reviews">Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__base">
+    <p>&copy; {{ year }} RanaCafe, Lorton VA. Menu and hours may vary — please call ahead to confirm.</p>
+  </div>
+</footer>

@@ -1,0 +1,54 @@
+<section class="reviews-hero">
+  <div class="reviews-hero__inner">
+    <span class="eyebrow-plain">Reviews</span>
+    <h1>What regulars are saying</h1>
+    <div class="rating-summary">
+      <div class="rating-summary__headline">
+        <strong>{{ overallRating }}</strong>
+        <div class="rating-summary__stars" aria-hidden="true">
+          @for (s of stars; track s) {
+            <span [class.is-filled]="s <= overallRating">★</span>
+          }
+        </div>
+        <span>{{ totalReviews }}+ combined reviews</span>
+      </div>
+      <div class="rating-summary__sources">
+        @for (src of ratingSources(); track src.source) {
+          <div class="rating-summary__source">
+            <span class="rating-summary__source-name">{{ src.source }}</span>
+            <span class="rating-summary__source-score">{{ src.rating }}</span>
+            <span class="rating-summary__source-count">{{ src.count }} reviews</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-grid">
+  @for (review of reviews(); track review.name + review.date) {
+    <article class="review-card">
+      <div class="review-card__top">
+        <div class="review-card__avatar" aria-hidden="true">{{ review.name.charAt(0) }}</div>
+        <div>
+          <p class="review-card__name">{{ review.name }}</p>
+          <p class="review-card__meta">{{ review.source }} · {{ review.date }}</p>
+        </div>
+      </div>
+      <div class="review-card__stars" [attr.aria-label]="review.rating + ' out of 5 stars'">
+        @for (s of stars; track s) {
+          <span [class.is-filled]="s <= review.rating">★</span>
+        }
+      </div>
+      <p class="review-card__quote">&ldquo;{{ review.quote }}&rdquo;</p>
+    </article>
+  }
+</section>
+
+<section class="section reviews-note">
+  <p>
+    Reviews above are paraphrased from public listings on Google, Yelp, Facebook, and Restaurantji as of
+    2026, and reflect individual visits — your experience may vary. Reviewer names are shown as they
+    appear publicly (often a first name and last initial).
+  </p>
+</section>

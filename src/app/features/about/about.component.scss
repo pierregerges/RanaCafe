@@ -1,0 +1,107 @@
+.about-hero {
+  background: var(--color-orange-wash);
+}
+
+.about-hero__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 4rem;
+  text-align: center;
+
+  p {
+    margin-inline: auto;
+    color: var(--color-ink-soft);
+    font-size: 1.05rem;
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+}
+
+.about-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 22px;
+  padding: 2.2rem;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    margin-top: 0.6rem;
+    margin-right: 0.7rem;
+  }
+}
+
+.about-card__address {
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+.about-card__link {
+  color: var(--color-green-dark);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.about-card__note {
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  margin-top: 1rem;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
+  }
+
+  td:first-child {
+    font-weight: 600;
+    width: 45%;
+  }
+
+  td:last-child {
+    color: var(--color-ink-soft);
+    text-align: right;
+  }
+
+  tr.is-closed td:last-child {
+    color: var(--color-orange-dark);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.map-section {
+  h2 {
+    margin-bottom: 1.6rem;
+  }
+}
+
+.map-frame {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 16px 34px -22px rgba(44, 33, 24, 0.4);
+}
+
+@media (max-width: 800px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

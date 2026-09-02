@@ -1,0 +1,136 @@
+:root {
+  /* Color tokens */
+  --color-cream: #f7f0e3;
+  --color-cream-soft: #ece2d0;
+  --color-paper: #fffdf8;
+  --color-ink: #2c2118;
+  --color-ink-soft: #6c5c4d;
+  --color-line: #e4d8c4;
+
+  --color-orange: #c1591c;
+  --color-orange-dark: #a44715;
+  --color-orange-light: #e79a5c;
+  --color-orange-wash: #fbe9d9;
+
+  --color-green: #45603d;
+  --color-green-dark: #33472d;
+  --color-green-light: #9dbb8c;
+  --color-green-wash: #eaefe1;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --content-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 62ch;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+.section {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.section--tight {
+  padding-block: 3.5rem;
+}
+
+.eyebrow-plain {
+  color: var(--color-green-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--color-orange);
+  color: var(--color-paper);
+
+  &:hover {
+    background: var(--color-orange-dark);
+  }
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+
+  &:hover {
+    border-color: var(--color-green);
+    color: var(--color-green-dark);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,124 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.nav__row {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__brand {
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.nav__brand-mark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  em {
+    font-style: italic;
+    color: var(--color-orange);
+  }
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  cursor: pointer;
+
+  span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    display: block;
+  }
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+
+  a {
+    text-decoration: none;
+    color: var(--color-ink-soft);
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding-block: 0.3rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: var(--color-ink);
+    }
+
+    &.is-active {
+      color: var(--color-ink);
+      border-color: var(--color-green);
+    }
+  }
+}
+
+.nav__cta {
+  background: var(--color-orange);
+  color: var(--color-paper) !important;
+  padding: 0.55rem 1.15rem !important;
+  border-radius: 999px;
+  border-bottom: none !important;
+
+  &:hover {
+    background: var(--color-orange-dark);
+  }
+}
+
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-cream);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-line);
+    transition: max-height 0.25s ease;
+
+    a {
+      width: 100%;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    &.nav__links--open {
+      max-height: 320px;
+    }
+  }
+
+  .nav__cta {
+    border-radius: 0 !important;
+    text-align: center;
+    margin: 0.6rem 0;
+  }
+}

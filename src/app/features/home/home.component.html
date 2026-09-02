@@ -1,0 +1,95 @@
+<section class="hero">
+  <div class="hero__art" aria-hidden="true">
+    <!-- Illustrative placeholder graphic standing in for a real storefront/latte-art hero photo -->
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="330" r="230" fill="var(--color-orange-wash)" />
+      <path d="M170 300h220a20 20 0 0 1 20 20v40c0 70-58 128-130 128s-130-58-130-128v-40a20 20 0 0 1 20-20z" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="6" />
+      <path d="M410 320h24a34 34 0 0 1 0 68h-24" fill="none" stroke="var(--color-ink)" stroke-width="6" />
+      <path d="M215 300c0-30 20-40 20-64s-20-30-20-56" fill="none" stroke="var(--color-green)" stroke-width="7" stroke-linecap="round" opacity="0.7" />
+      <path d="M275 300c0-30 20-40 20-64s-20-30-20-56" fill="none" stroke="var(--color-orange)" stroke-width="7" stroke-linecap="round" opacity="0.8" />
+      <path d="M335 300c0-30 20-40 20-64s-20-30-20-56" fill="none" stroke="var(--color-green)" stroke-width="7" stroke-linecap="round" opacity="0.7" />
+      <ellipse cx="280" cy="498" rx="150" ry="16" fill="var(--color-ink)" opacity="0.08" />
+    </svg>
+  </div>
+
+  <div class="hero__content">
+    <span class="eyebrow-plain">{{ cafe().neighborhood }}</span>
+    <h1>{{ cafe().tagline }}</h1>
+    <p class="hero__intro">
+      A family-run bakery and coffee bar in Lorton's Gunston Plaza, serving hand-built cakes, Middle Eastern
+      sweets, and coffee brewed everywhere from a quick espresso to a slow Turkish pour.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" routerLink="/about">Get directions</a>
+      <a class="btn btn--outline" routerLink="/reviews">Read reviews</a>
+    </div>
+    <div class="hero__rating">
+      <strong>{{ overallRating }}</strong>
+      <span>average rating across {{ totalReviews }}+ Google &amp; Yelp reviews</span>
+    </div>
+  </div>
+</section>
+
+<section class="section featured">
+  <div class="featured__head">
+    <span class="eyebrow-plain">On the menu</span>
+    <h2>A few things worth ordering</h2>
+    <p>From the espresso bar to the pastry case — these are the items that keep coming up in reviews.</p>
+  </div>
+
+  <div class="featured__grid">
+    @for (item of featured; track item.name) {
+      <article class="item-card">
+        <div class="item-card__art" [class]="'item-card__art--' + item.category" aria-hidden="true">
+          <span>{{ item.emoji }}</span>
+        </div>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="story-teaser">
+  <div class="story-teaser__inner">
+    <div class="story-teaser__text">
+      <span class="eyebrow-plain">Our story</span>
+      <h2>Baked, decorated, and brewed in-house</h2>
+      <p>{{ cafe().story }}</p>
+      <a routerLink="/about" class="story-teaser__link">Read more about RanaCafe →</a>
+    </div>
+    <div class="story-teaser__art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="120" width="320" height="220" rx="18" fill="var(--color-green-wash)" />
+        <rect x="70" y="150" width="90" height="70" rx="8" fill="var(--color-paper)" />
+        <rect x="175" y="150" width="90" height="70" rx="8" fill="var(--color-paper)" />
+        <rect x="280" y="150" width="55" height="70" rx="8" fill="var(--color-paper)" />
+        <rect x="70" y="235" width="130" height="80" rx="8" fill="var(--color-paper)" />
+        <rect x="215" y="235" width="120" height="80" rx="8" fill="var(--color-paper)" />
+        <circle cx="115" cy="185" r="18" fill="var(--color-orange)" opacity="0.85" />
+        <circle cx="220" cy="185" r="18" fill="var(--color-green)" opacity="0.7" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-teaser">
+  <div class="reviews-teaser__head">
+    <span class="eyebrow-plain">What people say</span>
+    <h2>Notes from recent visits</h2>
+  </div>
+  <div class="reviews-teaser__grid">
+    @for (review of reviews; track review.name + review.date) {
+      <blockquote class="quote-card">
+        <div class="quote-card__stars" [attr.aria-label]="review.rating + ' out of 5 stars'">
+          @for (s of [1, 2, 3, 4, 5]; track s) {
+            <span [class.is-filled]="s <= review.rating">★</span>
+          }
+        </div>
+        <p>&ldquo;{{ review.quote }}&rdquo;</p>
+        <footer>{{ review.name }} · {{ review.source }}</footer>
+      </blockquote>
+    }
+  </div>
+  <a routerLink="/reviews" class="btn btn--outline">See all reviews</a>
+</section>
